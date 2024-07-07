@@ -1,0 +1,21 @@
+.product_detail_container
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product_detail_container .product_image_cotainer 
+{
+    width: 50%;
+}
+
+
+.product_detail_container .product_image_cotainer img
+{
+    width: 100%;
+}
+
+.product_detail_container .product_info_container
+{
+    width: 45%;
+}

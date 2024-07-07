@@ -1,0 +1,5 @@
+.not_found_container
+{
+    margin-top: var(--header-height);
+    font-size: 30px;
+}

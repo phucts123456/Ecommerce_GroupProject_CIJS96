@@ -1,0 +1,102 @@
+.product_list_container
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product_list_container .product_item_container
+{
+    width: 18%;
+}
+
+.product_list_container .product_item_container a
+{
+    color: var(--black-color);
+    text-decoration: none;
+}
+
+.product_list_container .product_item_container:last-child
+{
+}
+
+.product_list_container .product_item_container .product_item_image_discount_container
+{
+    position: relative;
+    height: 60%;
+}
+
+.product_list_container .product_item_container .product_item_image_discount_container .product_item_image
+{
+    width: 80%;
+    height: 100%;
+}
+
+.product_list_container .product_item_container .product_item_image_discount_container .product_item_discount
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--white-color);
+    background-color: var(--red-title);
+    padding: 5px 10px 5px 10px;
+}
+
+.product_list_container .product_item_container .product_item_name_price_rating_container .product_item_price 
+{
+    display: flex;
+}
+
+.product_list_container .product_item_container .product_item_name_price_rating_container .product_item_name 
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.product_list_container .product_item_container .product_item_name_price_rating_container .product_item_rating{
+    display: flex;
+}
+
+.product_list_container .product_item_container .product_item_name_price_rating_container 
+.product_item_price 
+.product_item_price_after_dicount
+{
+    margin-right: 10px;
+    color: var(--red-title);
+    font-size: 20px;
+}
+
+.product_list_container .product_item_container .product_item_name_price_rating_container 
+.product_item_price 
+.product_item_price_before_dicount
+{
+    position: relative;
+    font-size: 20px;
+}
+.product_list_container .product_item_container .product_item_name_price_rating_container 
+.product_item_price 
+.product_item_price_before_dicount::after
+{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: black;
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+}
+.product_list_container .product_item_container .product_item_name_price_rating_container  .product_item_rating
+{
+    display: flex;
+}
+
+.product_list_container .product_item_container .product_item_name_price_rating_container  .product_item_rating .product_item_rating_star
+{
+}
+.product_list_container .product_item_container .product_item_name_price_rating_container  .product_item_rating .product_item_rating_count
+{
+    margin-left: 5px;
+    font-size: 19px;
+}
