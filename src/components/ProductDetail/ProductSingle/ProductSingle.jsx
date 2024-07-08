@@ -2,14 +2,20 @@ import React from 'react'
 import './ProductDetail.css'
 import ProductInfor from './ProductInfor'
 import ProductImage from './ProductImage'
-function ProductSingle() {
+function ProductSingle({title,rating,price,description,image,id,category,discount}) {
   return (
     <div className='product_detail_container'>
-        <ProductImage />
+        <ProductImage img={image} />
         <ProductInfor 
-          discount={0}
-          rating={{rate:'4',count:'50'}}
-          price={500}
+          discount={discount}
+          title={title}
+          rating={rating}
+          price={price}
+          description={description}
+          id={id}
+          key={id}
+          category={category}
+          image={image}
         />
    </div>
   )

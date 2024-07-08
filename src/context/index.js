@@ -1,5 +1,6 @@
 import {createContext} from 'react'
 
-const ProductContext = createContext("");
+const ProductListContext = createContext("");
+const ProductSingleContext = createContext("");
 
-export {ProductContext}
+export {ProductContext, ProductSingleContext}

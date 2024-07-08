@@ -17,7 +17,7 @@ function ProductItem({title, price, description, category, image, rating, discou
     }
     return (
         <div className='product_item_container'>
-          <Link to={`/product_detail/${id}`}>
+          <Link to={`/product_detail?productId=${id}&discount=${discount}`}>
             <div className='product_item_image_discount_container'>
               <img className='product_item_image' src={image} alt={title} />
               <div className='product_item_discount'>-{discount}%</div>

@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Header />
     <Routes>
       <Route exact path='/' Component={HomePage} />
-      <Route path='/product_detail/:productId' Component={ProductDetail} />
+      <Route path='/product_detail' Component={ProductDetail} />
       <Route exact path='*' Component={NotFound} />
     </Routes>  
   </BrowserRouter>,
