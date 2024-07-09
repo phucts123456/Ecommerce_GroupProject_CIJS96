@@ -3,8 +3,7 @@ import React from 'react'
 import { useState, useRef } from 'react';
 import AdvImage from '../../HomePage/AdvImage/AdvImage';
 function ProductInfor({title,rating,price,description,image,id,category,discount}) {
-  const [inputValue, setInputValue] = useState(0);
-  console.log("ratting"+rating);
+  const [inputValue, setInputValue] = useState(1);
   const maxRating = 5;
   const calculatePrice = () => {
     return discount > 0 ? Math.round(price - ((price * discount) / 100),3) : Math.round(price,3);
@@ -16,20 +15,83 @@ function ProductInfor({title,rating,price,description,image,id,category,discount
             ? <img className='product_item_rating_star_image' src='/img/golden_star.svg'></img> 
             : <img className='product_item_rating_star_image' src='/img/grey_star.svg'></img>);
     }
+
     return a;
 
 }
+function isDecimal(num) {
+  return (num ^ 0) !== num;
+}
+function addCart(productId, title, image, inputQuantity,discount)
+{
+  console.log("add cart")
+  if(inputQuantity < 1 || isDecimal(Number.parseFloat(inputQuantity))) 
+  {
+    alert("Quantity must larger or equal to 1 or without decimal parts");
+    return;
+  }
+  const cart = localStorage.getItem("cart");
+  if(cart == null)
+  {
+    console.log("cart null");
+    var cartProduct = {
+      productId: productId,
+      title: title,
+      price: calculatePrice(),
+      quantity: inputQuantity,
+      discount: discount,
+      image: image
+    }
+    let cartProductList = [];
+    cartProductList.push(cartProduct);
+    localStorage.setItem("cart" , JSON.stringify(cartProductList));
+    const cartAfterAdd = localStorage.getItem("cart");
+    console.log('Cart Nay:'+ cartAfterAdd);
+  }
+  else
+  {
+    console.log("cart not null");
+    let cartProductList = JSON.parse(cart);
+    for (let index = 0; index < cartProductList.length; index++) {
+      if (cartProductList[index].productId == productId)
+      {
+        console.log("productId bang nhau");
+        var tempCartProductList = cartProductList.filter((product) => product.productId != productId);
+        console.log("tempCartProductList" + JSON.stringify(tempCartProductList));
+        var cartToUpdate = cartProductList.find((product) => product.productId == productId);
+        cartToUpdate.quantity = Number.parseInt(cartToUpdate.quantity) + Number.parseInt(inputQuantity);
+        cartToUpdate.price = calculatePrice();
+        tempCartProductList = [...tempCartProductList, cartToUpdate];
+        localStorage.setItem("cart" , JSON.stringify(tempCartProductList));
+      }
+      else
+      {
+        var cartProduct = {
+          productId: productId,
+          title: title,
+          price: calculatePrice(),
+          quantity: inputQuantity,   
+          discount: discount,
+          image: image
+        }
+        cartProductList = [...cartProductList, cartProduct];
+        localStorage.setItem("cart" , JSON.stringify(cartProductList));      
+      }
+    }
+  }
+  window.location.href = "/cart";
+}
 
-function handleClick(action) {
+function handleClick(action) 
+{
  if(action === 'add')
  {
     setInputValue(inputValue + 1);
  }
- else if(inputValue >0)
+ else if(inputValue > 1)
  {
     setInputValue(inputValue -1);
  }
-
 }
   return (
     <div className='product_info_container'>
@@ -43,10 +105,10 @@ function handleClick(action) {
         <div className='product_info_quantity_and_buy'>
             <div className='product_info_quantity'>
               <button onClick={() =>{handleClick("sub")}}  className='product_info_quantity_btn product_info_quantity_sub_btn'>-</button>
-              <input onChange={(e) => setInputValue(e.target.value)} value={inputValue} className="product_info_quantity_input" inputMode='numeric' />
+              <input onChange={(e) => setInputValue(e.target.value)} value={inputValue} className="product_info_quantity_input" type={'number'} />
               <button onClick={() =>{handleClick("add")}}  className='product_info_quantity_btn product_info_quantity_add_btn'>+</button>
             </div>
-            <div className='product_info_buy'><button>Buy Now</button></div>
+            <div className='product_info_buy' onClick={() => {addCart(id,title,image,inputValue <= 0 ? 0 : inputValue,discount)}}><button>Buy Now</button></div>
         </div>
         <AdvImage img={'/img/service_product_detail.png'} />
     </div>

@@ -33,7 +33,7 @@ function ProductDetail() {
     .finally(function () {
       // always executed
     });
-  }, [product])
+  }, [])
   return (
     <div className='product_detail_container'>
         <Container>

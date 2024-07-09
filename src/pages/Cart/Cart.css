@@ -1,0 +1,22 @@
+.cart_container
+{
+    margin-top: var(--header-height);
+}
+
+.cart_container .container .product_detail_category
+{
+    margin-top: 140px;
+    font-size: 20px;
+}
+
+.cart_item_img
+{
+    width: 30px;
+    margin-right: 5px;
+}
+
+.cart_item_link
+{
+    text-decoration: none;
+    color: var(--black-color);
+}

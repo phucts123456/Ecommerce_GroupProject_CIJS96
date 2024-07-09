@@ -10,7 +10,7 @@ function Header() {
       <div className='header_container'>
         <Container>
           <div className='header_title_container'>
-                <h1 className='header_title'>Ecommerce</h1>
+                <h1 className='header_title'><a href='/'>Ecommerce</a></h1>
             </div>
             <NavBar />
             <SearchBar />

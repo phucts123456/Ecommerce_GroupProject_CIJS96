@@ -33,7 +33,11 @@
     width: 100%;
     width: 20%;
 } 
-
+.header_container .container .header_title_container .header_title a
+{
+    text-decoration: none;
+    color: var(--black-color);
+}
 .header_container .container  .nav_bar_container
 {
     width: 40%;
@@ -92,6 +96,13 @@
     align-items: center;
     justify-content: end;
 }
+
+.header_container .container .user_action_container .icon_link
+{
+    font-size: 30px;
+    color: var(--black-color);
+}
+
 
 .header_container .container .user_action_container .user_action_item
 {
