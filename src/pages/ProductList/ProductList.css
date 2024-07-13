@@ -1,0 +1,28 @@
+.product_list_container {
+    margin-top: var(--header-height);
+
+}
+
+.product_list_container .container .product_list
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product_pagination
+{
+    display: flex;
+    justify-content: center;
+}
+
+.product_pagination a{
+    text-decoration: none;
+    color: var(--black-color);
+    margin-left: 10px;
+    font-size: 30px;
+}
+
+.product_pagination .active
+{
+    color: var(--red-title);
+}

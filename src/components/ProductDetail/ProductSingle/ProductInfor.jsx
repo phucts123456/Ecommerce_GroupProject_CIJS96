@@ -31,9 +31,9 @@ function addCart(productId, title, image, inputQuantity,discount)
     return;
   }
   const cart = localStorage.getItem("cart");
-  if(cart == null)
+  if(cart == null || cart == '')
   {
-    console.log("cart null");
+    localStorage.removeItem("applyCoupon");
     var cartProduct = {
       productId: productId,
       title: title,
@@ -52,31 +52,31 @@ function addCart(productId, title, image, inputQuantity,discount)
   {
     console.log("cart not null");
     let cartProductList = JSON.parse(cart);
-    for (let index = 0; index < cartProductList.length; index++) {
-      if (cartProductList[index].productId == productId)
-      {
-        console.log("productId bang nhau");
-        var tempCartProductList = cartProductList.filter((product) => product.productId != productId);
-        console.log("tempCartProductList" + JSON.stringify(tempCartProductList));
-        var cartToUpdate = cartProductList.find((product) => product.productId == productId);
-        cartToUpdate.quantity = Number.parseInt(cartToUpdate.quantity) + Number.parseInt(inputQuantity);
-        cartToUpdate.price = calculatePrice();
-        tempCartProductList = [...tempCartProductList, cartToUpdate];
-        localStorage.setItem("cart" , JSON.stringify(tempCartProductList));
-      }
-      else
-      {
-        var cartProduct = {
+    console.log("cartProductList " + JSON.stringify(cart));
+    let cartToUpdate = cartProductList.find((cartProduct) => cartProduct.productId == productId);
+    console.log("cartToUpdate " + JSON.stringify(cartToUpdate));
+    if(cartToUpdate != null)
+    {
+      console.log("cart khac null");
+      var tempCartProductList = cartProductList.filter((product) => product.productId != productId);
+      console.log("tempCartProductList " + tempCartProductList);
+      cartToUpdate.quantity = Number.parseInt(cartToUpdate.quantity) + Number.parseInt(inputQuantity);
+      cartToUpdate.price = calculatePrice();
+      tempCartProductList = [...tempCartProductList, cartToUpdate];
+      localStorage.setItem("cart" , JSON.stringify(tempCartProductList));
+    }
+    else
+    {
+      var cartProduct = {
           productId: productId,
           title: title,
           price: calculatePrice(),
           quantity: inputQuantity,   
           discount: discount,
           image: image
-        }
-        cartProductList = [...cartProductList, cartProduct];
-        localStorage.setItem("cart" , JSON.stringify(cartProductList));      
       }
+      cartProductList = [...cartProductList, cartProduct];
+      localStorage.setItem("cart" , JSON.stringify(cartProductList));      
     }
   }
   window.location.href = "/cart";

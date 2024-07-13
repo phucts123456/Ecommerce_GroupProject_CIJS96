@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Container } from 'react-bootstrap'
 import ProductSingle from '../../components/ProductDetail/ProductSingle/ProductSingle'
 import './ProductDetail.css'
-import { Routes, Route, useParams, json, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import axiosClient from '../../apis/axiosInstance';
 function ProductDetail() {
   const [product, setProduct] = useState('');

@@ -4,7 +4,6 @@ import TodaySalesTimer from './TodaySalesTimer'
 import { Container } from 'react-bootstrap'
 import ProductList from '../ProductList/ProductList'
 import ViewAllProductBtn from '../ViewAllProductBtn/ViewAllProductBtn'
-import { getProductList } from '../../../apis/product'
 import axiosClient from "../../../apis/axiosInstance";
 
 function TodaySales() {
@@ -20,7 +19,7 @@ function TodaySales() {
         if(response.status == '200')
         {
           const productsFromApi = JSON.stringify(response.data);
-          console.log("productFromApi "+productsFromApi)
+          console.log("productsFromApi "+ productsFromApi);
           setProducts(JSON.parse(productsFromApi));
         }
         else
@@ -33,7 +32,7 @@ function TodaySales() {
     })
     .finally(function () {
     });
-  }, [products])
+  }, [])
   return (
     <div className='today_sales_container'>
       <Container>

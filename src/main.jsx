@@ -11,6 +11,7 @@ import Header from './components/Header/Header'
 import NotFound from './pages/NotFound/NotFound.jsx'
 import ProductDetail from './pages/ProductDetail/ProductDetail.jsx'
 import Cart from './pages/Cart/Cart.jsx'
+import ProductList from './pages/ProductList/ProductList.jsx'
 library.add(faMagnifyingGlass,faCartShopping,faCircleUser);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Routes>
       <Route exact path='/' Component={HomePage} />
       <Route path='/product_detail' Component={ProductDetail} />
+      <Route path='/product_list' Component={ProductList} />
       <Route path='/cart' Component={Cart} />
       <Route exact path='*' Component={NotFound} />
     </Routes>  

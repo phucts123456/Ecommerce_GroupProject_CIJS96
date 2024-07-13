@@ -3,7 +3,6 @@ import { Container } from 'react-bootstrap'
 import ProductItem from './ProductItem'
 import './ProductList.css'
 function ProductList({products}) {
-  console.log("products" +products)
   return (
     <div className='product_list_container'>
       {
