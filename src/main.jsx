@@ -14,6 +14,8 @@ import Cart from './pages/Cart/Cart.jsx'
 import ProductList from './pages/ProductList/ProductList.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import CheckOut from './pages/CheckOut/CheckOut.jsx'
+import Login from './pages/Login/Login.jsx'
+import Register from './pages/Register/Register.jsx'
 library.add(faMagnifyingGlass,faCartShopping,faCircleUser);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -24,6 +26,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path='/product_list' Component={ProductList} />
       <Route path='/cart' Component={Cart} />
       <Route path='/check_out' Component={CheckOut} />
+      <Route path='/login' Component={Login} />
+      <Route path='/register' Component={Register} />
       <Route exact path='*' Component={NotFound} />
     </Routes> 
     <Footer /> 
