@@ -7,6 +7,7 @@
 {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .product_pagination
@@ -19,10 +20,21 @@
     text-decoration: none;
     color: var(--black-color);
     margin-left: 10px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .product_pagination .active
 {
     color: var(--red-title);
+}
+
+.change_page_btn
+{
+    background-color: var(--white-color);
+    margin-left: 10px;
+    font-size: 20px;
+}
+.change_page_btn .change_page_btn_img
+{
+
 }

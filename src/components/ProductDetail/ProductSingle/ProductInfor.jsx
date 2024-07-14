@@ -22,7 +22,7 @@ function ProductInfor({title,rating,price,description,image,id,category,discount
 function isDecimal(num) {
   return (num ^ 0) !== num;
 }
-function addCart(productId, title, image, inputQuantity,discount)
+function addCart(productId, title, image, inputQuantity,discount,price)
 {
   console.log("add cart")
   if(inputQuantity < 1 || isDecimal(Number.parseFloat(inputQuantity))) 
@@ -53,7 +53,7 @@ function addCart(productId, title, image, inputQuantity,discount)
     console.log("cart not null");
     let cartProductList = JSON.parse(cart);
     console.log("cartProductList " + JSON.stringify(cart));
-    let cartToUpdate = cartProductList.find((cartProduct) => cartProduct.productId == productId);
+    let cartToUpdate = cartProductList.find((cartProduct) => cartProduct.productId == productId && cartProduct.price == price);
     console.log("cartToUpdate " + JSON.stringify(cartToUpdate));
     if(cartToUpdate != null)
     {
@@ -108,7 +108,7 @@ function handleClick(action)
               <input onChange={(e) => setInputValue(e.target.value)} value={inputValue} className="product_info_quantity_input" type={'number'} />
               <button onClick={() =>{handleClick("add")}}  className='product_info_quantity_btn product_info_quantity_add_btn'>+</button>
             </div>
-            <div className='product_info_buy' onClick={() => {addCart(id,title,image,inputValue <= 0 ? 0 : inputValue,discount)}}><button>Buy Now</button></div>
+            <div className='product_info_buy' onClick={() => {addCart(id,title,image,inputValue <= 0 ? 0 : inputValue,discount,price)}}><button>Buy Now</button></div>
         </div>
         <AdvImage img={'/img/service_product_detail.png'} />
     </div>

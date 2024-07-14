@@ -37,20 +37,34 @@ function ProductDetail() {
   return (
     <div className='product_detail_container'>
         <Container>
-             <div className='product_detail_category'>
-              {`${product.category} > ${product.title}`}
-             </div>
-             <ProductSingle 
-              discount={discount !== undefined ? discount : 0}
-              title={product?.title !== undefined ? product?.title : ''}
-              rating={product?.rating !== undefined ? product?.rating : {rate:0,count:0}}
-              price={product?.price !== undefined ? product?.price : 0}
-              description={product?.description !== undefined ? product?.description : ""}
-              id={product?.id !== undefined ? product?.id : ""}
-              key={product?.id !== undefined ? product?.id : ""}
-              category={product?.category !== undefined ? product?.category : ""}
-              image={product?.image !== undefined ? product?.image : ""}
-             />
+          {
+            product 
+            ?
+              <>             
+                <div className='product_detail_category'>
+                  {`${product.category} > ${product.title}`}
+                </div>
+                <ProductSingle 
+                  discount={discount !== undefined ? discount : 0}
+                  title={product?.title !== undefined ? product?.title : ''}
+                  rating={product?.rating !== undefined ? product?.rating : {rate:0,count:0}}
+                  price={product?.price !== undefined ? product?.price : 0}
+                  description={product?.description !== undefined ? product?.description : ""}
+                  id={product?.id !== undefined ? product?.id : ""}
+                  key={product?.id !== undefined ? product?.id : ""}
+                  category={product?.category !== undefined ? product?.category : ""}
+                  image={product?.image !== undefined ? product?.image : ""}/>
+              </> 
+            :
+              <>
+                <div class="loading">
+                  Loading&#8230;
+                </div>
+                <div class="content">
+                  
+                </div>
+              </>
+          }
         </Container>
     </div>
   )

@@ -14,8 +14,9 @@ function ProductList({products}) {
             image={item.image} 
             price={item.price} 
             rating={item.rating} 
-            id={item.id}/>
-        }) : ""
+            id={item.id} />
+        }) : 
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
       }
     </div>
   )

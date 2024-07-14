@@ -15,11 +15,15 @@
   --red-title: #db4444;
   --seperate-bottom-border: #f0f0f0;
   --space-between-section:30px;
+  --footer-height:270px;
+  --footer-bottom:-270px;
 }
 
 #root {
 	display: block;
 	width: 100%;
+	position: relative;
+	min-height: 100vh;
 }
 
 .container

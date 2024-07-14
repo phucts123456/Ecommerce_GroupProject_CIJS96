@@ -69,14 +69,18 @@ function ProductList() {
                 }) : ""
             }
             </div>
-        
-            <div className='product_pagination'>
-                <button className='change_page_btn' disabled={page == 1 ? true: false}>Prev</button>
+            {
+              products != "" 
+              ?
+                <div className='product_pagination'>
+                <button className='change_page_btn' disabled={page == 1 ? true: false}>Back</button>
                 {
                     getPagination()
                 }
                 <button className='change_page_btn' disabled={page == totalPage ? true: false}>Next</button>
-            </div>
+              </div>
+             : ""
+            }
         </Container>
        
     </div>

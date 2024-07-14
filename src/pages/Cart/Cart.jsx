@@ -1,4 +1,4 @@
-import { Select } from 'antd'
+import { Button, Select } from 'antd'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -63,14 +63,18 @@ function Cart() {
         }
         setTotalPrice(subTotalPrice - discountPrice);    
     }
-    const deleteSingle = (cartItem) => {
+    const deleteSingle = (productId, price) => {
         const cart = localStorage.getItem("cart");
         if(cart != null 
             && cart.length > 0 
             && cart != '')
         {
             let cartList = JSON.parse(cart);
-            let cartToUpdate = cartList.filter((cartObject) => cartObject.productId != cartItem.productId);
+            let cartToUpdate = cartList.filter(function(item) {
+                if (item['productId'] == productId && item['price'] == price) 
+                    return false;
+                return true;
+            });
             setCartData(cartToUpdate);
             const coupon = localStorage.getItem("applyCoupon");
             if(coupon != null && coupon != '')
@@ -126,7 +130,7 @@ function Cart() {
                                             <td>{item.price}</td>
                                             <td>{item.quantity}</td>
                                             <td>{Number.parseInt(item.price) * Number.parseInt(item.quantity)}</td>
-                                            <td><button style={{backgroundColor:"var(--white-color)"}} onClick={() => {deleteSingle(item)}}><img style={{width:'30px'}} src='/img/icons8-trash.svg'/></button></td>
+                                            <td><button style={{backgroundColor:"var(--white-color)"}} onClick={() => {deleteSingle(item.productId,item.price)}}><img style={{width:'30px'}} src='/img/icons8-trash.svg'/></button></td>
                                         </tr>
                                     </>)}) 
                                 : ""
@@ -173,7 +177,7 @@ function Cart() {
                                     <div className='total_price_price'>${totalPrice}</div>
                                 </div>
                                 <div className='check_out_btn_continer'>
-                                    <button className='check_out_btn' >Process checkout</button>
+                                    <Button href='/check_out' className='check_out_btn' >Process checkout</Button>
                                 </div>
                             </div>
                         </div> 

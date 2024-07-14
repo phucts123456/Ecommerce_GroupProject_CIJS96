@@ -5,7 +5,10 @@
 .cart_list_container
 {
     margin-bottom: 100px;
+    margin-top: 70px;
 }
+
+
 .cart_container .container .product_detail_category
 {
     margin-top: 140px;
@@ -77,10 +80,15 @@
 }
 .subtotal_container .check_out_btn_continer .check_out_btn
 {
-    
     padding: 10px;
     background-color: var(--red-title);
-    color: var(--white-color);
+    color: var(--white-color);  
+}
+.subtotal_container .check_out_btn_continer a
+{
+    text-decoration: none !important;
+    padding: 20px !important;
+    font-size: 18px;
 }
 
 .subtotal_container .subtotal_title {
