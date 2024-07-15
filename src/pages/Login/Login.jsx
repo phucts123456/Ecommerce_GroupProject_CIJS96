@@ -40,7 +40,6 @@ function Login() {
                 </div>
                 <button className='login_right_input login_right_submit_btn' onClick={() => login()}>Login</button>
             </div>
-
         </div>
     </div>
     )

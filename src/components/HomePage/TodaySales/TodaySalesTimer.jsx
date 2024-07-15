@@ -113,6 +113,7 @@ function TodaySalesTimer({totalTime}) {
     const onClickReset = () => {
         clearTimer(getDeadTime());
     };
+    
   return (
     <div className='today_sales_timer_container'>
       <div className="today_sales_timer_title">Flash Sales</div>

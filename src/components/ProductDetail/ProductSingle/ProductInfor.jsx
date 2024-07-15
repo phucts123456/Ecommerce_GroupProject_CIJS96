@@ -95,7 +95,7 @@ function handleClick(action)
 }
   return (
     <div className='product_info_container'>
-        <h1 className='product_info_name'>{title}</h1>
+        <h2 className='product_info_name'>{title}</h2>
         <div className='product_info_ratting'>
             <div className="product_item_rating_star">{getRatting()}</div>
             <div className="product_item_rating_count">({rating.count} reviews)</div>

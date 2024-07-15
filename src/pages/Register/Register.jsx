@@ -11,7 +11,8 @@ function Register() {
         if(usersFromDB != null)
         {
             const userList = JSON.parse(usersFromDB);
-            if(userList.find((user) => user.userName == userName) != null){
+            if(userList.find((user) => user.userName == userName) != null)
+            {
                 alert("user existed");
                 return;
             }

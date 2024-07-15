@@ -7,12 +7,15 @@
 .product_detail_container .product_image_cotainer 
 {
     width: 50%;
+    display: flex;
+    justify-content: center;
 }
 
 
 .product_detail_container .product_image_cotainer img
 {
-    width: 100%;
+    width: 60%;
+    height: 60%;
 }
 
 .product_detail_container .product_info_container

@@ -5,7 +5,7 @@
 
 .product_detail_container .container .product_detail_category
 {
-    margin-top: 140px;
+    margin-top: 40px;
     font-size: 20px;
 }
 .product_detail_container .container .product_detail
@@ -18,6 +18,8 @@
 .product_detail_container .container .product_detail .product_image_cotainer
 {
     width: 50%;
+    display: flex;
+    justify-content: center;
 }
 
 .product_detail_container .product_info_container .product_info_ratting
@@ -42,7 +44,7 @@
 .product_detail_container .product_info_container .product_info_desc
 {
     font-size: 18px;
-    padding: 20px 5px;
+    padding: 0px 5px 20px 5px;
     border-bottom: 1px solid var(--black-color);
     margin-bottom: 20px;
 }
@@ -238,4 +240,9 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.product_info_container .AdvImage_container_img
+{
+  width: 75%;
 }
