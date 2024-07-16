@@ -22,6 +22,7 @@
     
     justify-content: space-between;
 }
+
 .category_item_container
 {
     width: 20%;
@@ -29,6 +30,7 @@
     border: solid 1px var(--black-color);
     border-radius: 5px;
 }
+
 .category_item_container .category_item
 {
     display: flex;

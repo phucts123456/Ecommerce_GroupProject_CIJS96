@@ -11,6 +11,7 @@ function Login() {
             const loginUser = userList.find((user) => user.userName == userName && user.password == password);
             if(loginUser != null)
             {
+                localStorage.setItem('loginUser', JSON.stringify(loginUser));
                 alert("Login success");
             }
             else
@@ -38,7 +39,10 @@ function Login() {
                 <div className='login_right_input_container'>
                     <input className='login_right_input login_right_input_password' placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <button className='login_right_input login_right_submit_btn' onClick={() => login()}>Login</button>
+                <div className='login_right_input_submit'>
+                    <button className='login_right_input login_right_submit_btn' onClick={() => login()}>Login</button>
+                    <a href='/register'>Create an account</a>
+                </div>
             </div>
         </div>
     </div>

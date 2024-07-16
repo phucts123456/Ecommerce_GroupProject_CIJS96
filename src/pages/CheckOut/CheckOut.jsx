@@ -120,58 +120,64 @@ function CheckOut() {
         if(isError == false){
             isError = validateFormat();
         }
-        // let orderHistory = localStorage.getItem("order") != null ? localStorage.getItem("order") : [];
-        // let orderId = 1;
+        let orderHistory = localStorage.getItem("order") != null ? localStorage.getItem("order") : [];
+        let orderId = 1;
 
-        // if (orderHistory.length > 0)
-        // {
-        //     console.log("history khacs nul");
-        //     let orderHistoryObject = JSON.parse(orderHistory);
-        //     orderId = orderHistoryObject.length + 1;
-        //     let order = {
-        //         orderId:orderId,
-        //         cartData:cartData,
-        //         subTotal:subTotal,
-        //         discountPrice:discountPrice,
-        //         totalPrice:totalPrice,
-        //         user: {
-        //             fullName:fullName,
-        //             streetAddress:streetAddress,
-        //             companyName:companyName,
-        //             city:city,
-        //             email:email,
-        //             phoneNumber:phoneNumber,
-        //             apartment:apartment,
-        //             userId:""
-        //         }
-        //     }
-        //     orderHistoryObject.push(order);
-        //     console.log("orderHistoryObject "+ JSON.stringify(orderHistoryObject))
-        //     localStorage.setItem("order", JSON.stringify(orderHistoryObject));
+        if (orderHistory.length > 0)
+        {
+            console.log("history khacs nul");
+            let orderHistoryObject = JSON.parse(orderHistory);
+            orderId = orderHistoryObject.length + 1;
+            let loginUser = localStorage.getItem("loginUser") != null 
+                ? JSON.parse(localStorage.getItem("loginUser")) 
+                : null;
+            let userId = '';
+            if(loginUser != null) userId = loginUser.userId; 
+            let order = {
+                orderId:orderId,
+                cartData:cartData,
+                subTotal:subTotal,
+                discountPrice:discountPrice,
+                totalPrice:totalPrice,
+                orderDate: (new Date()).toDateString(),
+                user: {
+                    fullName:fullName,
+                    streetAddress:streetAddress,
+                    companyName:companyName,
+                    city:city,
+                    email:email,
+                    phoneNumber:phoneNumber,
+                    apartment:apartment,
+                    userId:userId
+                }
+            }
+            orderHistoryObject.push(order);
+            console.log("orderHistoryObject "+ JSON.stringify(orderHistoryObject))
+            localStorage.setItem("order", JSON.stringify(orderHistoryObject));
 
-        // }
-        // else
-        // {
-        //     console.log("history null");
-        //     let order = [{
-        //         orderId:orderId,
-        //         cartData:cartData,
-        //         subTotal:subTotal,
-        //         discountPrice:discountPrice,
-        //         totalPrice:totalPrice,
-        //         user: {
-        //             fullName:fullName,
-        //             streetAddress:streetAddress,
-        //             companyName:companyName,
-        //             city:city,
-        //             email:email,
-        //             phoneNumber:phoneNumber,
-        //             apartment:apartment,
-        //             userId:""
-        //         }
-        //     }]
-        //     localStorage.setItem("order", JSON.stringify(order));
-        // }
+        }
+        else
+        {
+            console.log("history null");
+            let order = [{
+                orderId:orderId,
+                cartData:cartData,
+                subTotal:subTotal,
+                discountPrice:discountPrice,
+                totalPrice:totalPrice,
+                user: {
+                    fullName:fullName,
+                    streetAddress:streetAddress,
+                    companyName:companyName,
+                    city:city,
+                    email:email,
+                    phoneNumber:phoneNumber,
+                    apartment:apartment,
+                    userId:""
+                }
+            }]
+            localStorage.setItem("order", JSON.stringify(order));
+        }
         if(isError == false)
         {
             setIsSuccess(true);

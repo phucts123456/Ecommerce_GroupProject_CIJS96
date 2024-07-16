@@ -24,7 +24,6 @@ function isDecimal(num) {
 }
 function addCart(productId, title, image, inputQuantity,discount,price)
 {
-  console.log("add cart")
   if(inputQuantity < 1 || isDecimal(Number.parseFloat(inputQuantity))) 
   {
     alert("Quantity must larger or equal to 1 or without decimal parts");
@@ -52,9 +51,11 @@ function addCart(productId, title, image, inputQuantity,discount,price)
   {
     console.log("cart not null");
     let cartProductList = JSON.parse(cart);
-    console.log("cartProductList " + JSON.stringify(cart));
-    let cartToUpdate = cartProductList.find((cartProduct) => cartProduct.productId == productId && cartProduct.price == price);
-    console.log("cartToUpdate " + JSON.stringify(cartToUpdate));
+    console.log("cartProductList ");
+    console.log(cartProductList);
+    let cartToUpdate = cartProductList.find((cartProduct) => cartProduct.productId == productId && cartProduct.price == Math.round(price));
+    console.log("cartToUpdate ");
+    console.log(cartToUpdate);
     if(cartToUpdate != null)
     {
       console.log("cart khac null");
