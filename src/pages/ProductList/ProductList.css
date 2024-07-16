@@ -7,7 +7,6 @@
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .product_list_container .container .filter_bar
@@ -20,7 +19,7 @@
 .product_list_container .container .product_list_filter
 {
     display: flex;
-    width: 40%;
+    width: 38%;
     
 } 
 

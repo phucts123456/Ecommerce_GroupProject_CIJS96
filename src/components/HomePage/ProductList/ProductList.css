@@ -6,17 +6,13 @@
 
 .product_list_container .product_item_container
 {
-    width: 18%;
+    width: 20%;
 }
 
 .product_list_container .product_item_container a
 {
     color: var(--black-color);
     text-decoration: none;
-}
-
-.product_list_container .product_item_container:last-child
-{
 }
 
 .product_list_container .product_item_container .product_item_image_discount_container
@@ -101,8 +97,6 @@
     font-size: 19px;
 }
 
-
-
 .lds-ring,
 .lds-ring div {
   box-sizing: border-box;
@@ -143,4 +137,3 @@
     transform: rotate(360deg);
   }
 }
-
