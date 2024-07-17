@@ -24,6 +24,15 @@ function isDecimal(num) {
 }
 function addCart(productId, title, image, inputQuantity,discount,price)
 {
+  let loginUser = localStorage.getItem("loginUser") != null 
+    ? JSON.parse(localStorage.getItem("loginUser")) 
+    : null;
+  if(loginUser == null) 
+  {
+    window.location.href = '/login';
+    return;
+  }
+
   if(inputQuantity < 1 || isDecimal(Number.parseFloat(inputQuantity))) 
   {
     alert("Quantity must larger or equal to 1 or without decimal parts");
@@ -85,14 +94,14 @@ function addCart(productId, title, image, inputQuantity,discount,price)
 
 function handleClick(action) 
 {
- if(action === 'add')
- {
-    setInputValue(inputValue + 1);
- }
- else if(inputValue > 1)
- {
-    setInputValue(inputValue -1);
- }
+  if(action === 'add')
+  {
+      setInputValue(inputValue + 1);
+  }
+  else if(inputValue > 1)
+  {
+      setInputValue(inputValue -1);
+  }
 }
   return (
     <div className='product_info_container'>
