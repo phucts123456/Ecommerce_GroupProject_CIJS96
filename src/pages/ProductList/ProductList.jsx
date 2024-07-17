@@ -138,13 +138,13 @@ function ProductList() {
         <h3>Product List</h3>
         <div className='product_list_filter'>
           <p className='product_list_filter_title'>Sort by</p>
-          <Select className='product_list_filter_ddl' defaultValue='' onChange={handleSelectChange} >
-            <Option value=""></Option>
-            <Option value="name_desc">Desceding Name</Option>             
-            <Option value="name_asc">Ascending Name</Option>             
-            <Option value="price_desc">Desceding Price</Option>             
-            <Option value="price_asc">Ascending Price</Option>             
-          </Select>
+          <select className='product_list_filter_ddl' defaultValue='' onChange={(e) => handleSelectChange(e.target.value)} >
+            <option value=""></option>
+            <option value="name_desc">Desceding Name</option>             
+            <option value="name_asc">Ascending Name</option>             
+            <option value="price_desc">Desceding Price</option>             
+            <option value="price_asc">Ascending Price</option>             
+          </select>
         </div>
       </div>
         <div className='product_list'>

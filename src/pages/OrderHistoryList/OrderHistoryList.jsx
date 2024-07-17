@@ -17,8 +17,8 @@ function OrderHistoryList() {
             setOrderList(userOrder);
         }
     }, []);
-    const viewOrderDetail = () => {
-        console.log('first')
+    const viewOrderDetail = (orderId) => {
+        window.location.href = `/order_history_detail?orderId=${orderId}`
     }
     return (
         <div className='order_history_list_container'>
@@ -45,12 +45,9 @@ function OrderHistoryList() {
                                 ? orderList.map((item) =>{                             
                                     return (
                                     <>
-                                        <tr className='order_history_row' onClick={() => viewOrderDetail()}>
+                                        <tr className='order_history_row' onClick={() => viewOrderDetail(item.orderId)}>
                                             <th scope="row">
-                                                <a className='cart_item_link' href={`/product_detail?productId=${item.productId}&discount=${item.discount}`}>
-                                                    <img className='cart_item_img' src={item.image} />
-                                                    {item.orderId}
-                                                </a>
+                                                {item.orderId}
                                             </th>
                                             <td>{item.orderDate}</td>
                                             <td>{item.user.fullName}</td>

@@ -14,7 +14,6 @@ function Cart() {
     const [ currCoupon, setCurrCoupon ] = useState(null);
     useEffect(()=>{
         const cart = localStorage.getItem("cart");
-        console.log("cart "+ typeof cart)
         if(cart != null && cart != '')
         {
             let cartInfor = JSON.parse(cart);
@@ -35,6 +34,7 @@ function Cart() {
         }
     }, [])
     const handleChange = (value) => {
+
         setSelectedCoupon(value);
     }
     const ApplyCoupon = () => {
@@ -145,14 +145,20 @@ function Cart() {
                     ?   
                         <div className='coupon_and_subtotal_container'>
                             <div className='coupon_container'>
-                                <Select className='coupon_ddl' defaultValue={currCoupon != null ? currCoupon.couponId : ""} onChange={handleChange}>
-                                    <Option value=""></Option>
+                                <select className='coupon_ddl' onChange={(e) => setSelectedCoupon(e.target.value)}>
+                                    {/* <Option value=""></Option>
                                     {
                                         couponList.map((coupon) =>{
                                             return <Option value={coupon.couponId}>{coupon.couponId} - {coupon.discount}%</Option>
                                         })
+                                    } */}
+                                   <option value=""></option>
+                                    {
+                                        couponList.map((coupon) =>{
+                                            return <option value={coupon.couponId}>{coupon.couponId} - {coupon.discount}%</option>
+                                        })
                                     }
-                                </Select>
+                                </select>
                                 <button className='coupon_use_btn' onClick={ApplyCoupon}>Use Coupon</button>
                                 <div className='coupon_msg'>{currCoupon?.couponId != null ? `Coupon ${currCoupon?.couponId} is applied. You get ${currCoupon?.discount}% discount` : ""}</div>
                             </div>
@@ -165,7 +171,7 @@ function Cart() {
                                     <div className='subtotal_price_price'>${subTotal}</div>
                                 </div>
                                 <div className='cart_total discount_price'>
-                                    <div className='discount_price_title'>Subtotal:</div>
+                                    <div className='discount_price_title'>Discount:</div>
                                     <div className='discount_price_price'>${discountPrice}</div>
                                 </div>
                                 <div className='cart_total subtotal_shipping_fee_container'>

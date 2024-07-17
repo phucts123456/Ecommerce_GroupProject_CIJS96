@@ -1,6 +1,7 @@
 .cart_container
 {
     margin-top: var(--header-height);
+    padding-bottom: 30px;
 }
 .cart_list_container
 {
@@ -44,6 +45,7 @@
 .coupon_container .coupon_ddl
 {
     width: 60%;
+    border: 1px solid var(--black-color);
 }
 .coupon_and_subtotal_container
 {

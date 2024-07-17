@@ -122,7 +122,7 @@ function CheckOut() {
         }
         let orderHistory = localStorage.getItem("order") != null ? localStorage.getItem("order") : [];
         let orderId = 1;
-
+        if(isError != '') return;
         if (orderHistory.length > 0)
         {
             console.log("history khacs nul");
@@ -154,10 +154,15 @@ function CheckOut() {
             orderHistoryObject.push(order);
             console.log("orderHistoryObject "+ JSON.stringify(orderHistoryObject))
             localStorage.setItem("order", JSON.stringify(orderHistoryObject));
-
+            localStorage.removeItem("cart");
         }
         else
         {
+            let loginUser = localStorage.getItem("loginUser") != null 
+                ? JSON.parse(localStorage.getItem("loginUser")) 
+                : null;
+            let userId = '';
+            if(loginUser != null) userId = loginUser.userId; 
             console.log("history null");
             let order = [{
                 orderId:orderId,
@@ -165,6 +170,7 @@ function CheckOut() {
                 subTotal:subTotal,
                 discountPrice:discountPrice,
                 totalPrice:totalPrice,
+                orderDate: (new Date()).toDateString(),
                 user: {
                     fullName:fullName,
                     streetAddress:streetAddress,
@@ -173,17 +179,18 @@ function CheckOut() {
                     email:email,
                     phoneNumber:phoneNumber,
                     apartment:apartment,
-                    userId:""
+                    userId:userId
                 }
             }]
             localStorage.setItem("order", JSON.stringify(order));
+            localStorage.removeItem("cart");
         }
         if(isError == false)
         {
             setIsSuccess(true);
             setTimeout(() => {
                 setIsSuccess(false);
-                //window.location.href = "/";
+                window.location.href = "/";
             },2000);
         }
     }

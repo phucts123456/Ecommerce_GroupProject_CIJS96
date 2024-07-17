@@ -6,18 +6,28 @@ import { useEffect } from 'react';
 
 function UserAction() {
   const [isLogin, setIsLogin] = useState(false);
-  const [{userId, userName, email, phoneNumber, password}, setLoginUser] = useState({});
+  const [loginUser, setLoginUser] = useState({});
   useEffect(() =>{
     let loginUser = localStorage.getItem("loginUser") != null 
       ? JSON.parse(localStorage.getItem("loginUser")) 
       : null;
-    let userId = '';
     if(loginUser != null) 
     {
       setLoginUser(loginUser);
       setIsLogin(true);
     }
+    else{
+      setIsLogin(false);
+    }
   },[])
+  const logout = () => {
+    let loginUser = localStorage.getItem("loginUser") != null 
+      ? JSON.parse(localStorage.getItem("loginUser")) 
+      : null;
+    if(loginUser != null) 
+      localStorage.removeItem("loginUser");
+    window.location.href = '/'
+  }
   return (
     <div className='user_action_container'>
       <Button style={{backgroundColor:'white',border:'none'}}>
@@ -28,9 +38,16 @@ function UserAction() {
           <a className='icon_link' href='/login'><FontAwesomeIcon className='user_action_item user_action_user' icon="fa-regular fa-circle-user" /></a>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Hello, {userName} </a></li>
-          <li><a class="dropdown-item" href="#">Order History</a></li>
-          <li><a class="dropdown-item" href="#">Logout</a></li>
+          {
+            isLogin 
+            ? <>
+                <li><a class="dropdown-item" href="#">Hello, {loginUser.userName} </a></li>
+                <li><a class="dropdown-item" href="/order_history_list">Order History</a></li>
+                <li><a class="dropdown-item" style={{cursor:'pointer'}} onClick={() =>logout()}>Logout</a></li>
+              </>
+            : <li><a class="dropdown-item" href="/login">Login </a></li>
+          }
+
         </ul>
       </div>
       
