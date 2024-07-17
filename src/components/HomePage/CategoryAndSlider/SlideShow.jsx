@@ -21,13 +21,13 @@ function SlideShow() {
                 <h3 style={contentStyle}><a href='#'><img src='./img/Iphone14Banner.png'></img></a></h3>
             </div>
             <div>
-                <h3 style={contentStyle}>2</h3>
+                <h3 style={contentStyle}><img src='./img/Iphone14Banner.png'></img></h3>
             </div>
             <div>
-                <h3 style={contentStyle}>3</h3>
+                <h3 style={contentStyle}><img src='./img/Iphone14Banner.png'></img></h3>
             </div>
             <div>
-                <h3 style={contentStyle}>4</h3>
+                <h3 style={contentStyle}><img src='./img/Iphone14Banner.png'></img></h3>
             </div>
         </Carousel>
     </div>
